@@ -14,4 +14,132 @@
 </head>
 <body> 
 <img src="/img/tipos-sistemas-operativos.jpg">
+<hr>
+<h1> Sistemas Operativos</h1>
+<h2> Modelo cliente servidor (más usado) vs Modelo P2P (Servicio web para clientes) </h2>
+<ol> Elementos básicos de una red:
+    <li> HOST -- PC</li>
+    <li> Medio de transmisión -- Cable</li>
+    <li> Acces point -- Switch</li>
+</ol>
+<p> Router (Da la ruta); integrada un firewall que nos protege (Bloquear al acceso no autorizado).
+Los Host llevan integradas una tarjeta de red o adaptador red (NIC: Network interface card) que nos permiten tener acceso wi-fi sin uso de un cable.
+</p>
+<h2>Binario a decimal</h2>
+<p>8 4 2 1
+1010 = 8+2 = 10 - máximos números 255=2 elevado a 8  = 256 → a 8 bits. </p>ç
+<h2> Direcciones IP </h2>
+<table> 
+    <tr>
+        <th>Person 1</th>
+        <th>Person 2</th>
+        <th>Person 3</th>
+      </tr>
+      <tr>
+        <td>Emil</td>
+        <td>Tobias</td>
+        <td>Linus</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>14</td>
+        <td>10</td>
+      </tr>
+</table>
+<p> Las direcciones de clase E y D  no tienen direcciones de net y host. Son direcciones especiales a nivel mundial y están reservadas para otras funciones (no se asignan).</p>
+<p> ·Identificadores de red → identifican un conjunto de host (a una red o subred). Tienen todos los bits de host a “0”. </p>
+<table> 
+    <tr>
+        <th>Person 1</th>
+        <th>Person 2</th>
+        <th>Person 3</th>
+      </tr>
+      <tr>
+        <td>Emil</td>
+        <td>Tobias</td>
+        <td>Linus</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>14</td>
+        <td>10</td>
+      </tr>
+</table>
+<p>·IP de broadcast → enviar un paquete a todos los host de una red. Tienen todos los bits de host a 1.</p>
+<table> 
+    <tr>
+        <th>Person 1</th>
+        <th>Person 2</th>
+        <th>Person 3</th>
+      </tr>
+      <tr>
+        <td>Emil</td>
+        <td>Tobias</td>
+        <td>Linus</td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td>14</td>
+        <td>10</td>
+      </tr>
+</table>
+<p>·Localhost → 127 son todas las de localhost. Se utilizan para comprobar la propia conectividad. </p>
+<p>·Local link → 169.254 son las que asigna el sistema operativo al no llegar un DHCP. IP asignada para el arranque. </p>
+<p>·IP privada → No pueden circular por internet, ni como origen ni como destino. Se pueden repetir en las casas, empresas,… <br> 
+·IP pública → Router pasa de IP privada a IP pública (traducción). Se produce en la NAT.
+</p>
+<h2>Diferentes tipos de tarjeta</h2>
+<ul>
+    <li>HOST ONLY</li>
+    <li>RED INTERNA</li>
+    <li>BRIDGE</li>
+    <li>NAT</li>
+    <li>EXPERIMENTALES</li>  
+</ul>
+<h2> Particiones de nuestro sistema</h2>
+<p> GPT y MBR son dos diferentes tipos de configurar las particiones de nuestro ordenador.</p>
+<ul> 
+<P>MBR </P>
+<li>4 particiones primarias - Máximo 1 extendida</li>
+<li>Tantas particiones lógicas como nos permita nuestro disco</li>
+<li>Máximo 2TB de Disco Duro</li>
+<li> Funciona con Bios</li>
+</ul>
+<br> 
+<ul>
+<p>GPT</p>
+<lI>128 particiones primarias</lI>
+<li>Tantas particiones lógicas como nos permita nuestro disco</li>
+<li>Máximo 256TB de Disco Duro</li>
+<li>Funciona con UEFI</li>
+</ul>
+<br> 
+<h2>Tipos de licencia de Windows</h2>
+<p> Existen diferentes tipos de licencia de Windows.</p>
+<ul>
+    <li>OEM → Ligadas a un dispositivo determinado, es decir que la licencia no podrá ser instalada ni utilizada en ningún otro dispositivo, bajo ninguna circunstancia. Sólo podrá ser utilizada en la computadora nueva que compramos.</li>
+    <li>Retail → La licencia Retail se diferencia de la licencia OEM fundamentalmente en el hecho de que podremos instalarla en cualquier dispositivo, siempre y cuando se respete la limitación de hacerlo en un solo equipo, es decir que no debemos instalar este software en más de un equipo simultáneamente.</li>
+    <li>Por volúmen → Ventas de licencias al por mayor.</li>
+    <li>Educativas → Licencias educativas que facilita Windows gracias a un convenio con el centro. Una vez se finalicen los estudios, las licencias se pierden.</li>
+</ul>
+<h2>Activación de licencias</h2>
+<ul> 
+    <li>Licencias originales de Windows</li>
+    <li>slmgr /rearm → Período de gracia que podemos activar hasta 3 veces, 120 días</li>
+    <li>slmgr /ipk XXXX-XX... (num licencia)//Activación de la licencias slmgr /skms kms.digiboy.ir //Connexión con el servidor de licencias slmgr /ato → cmd como admin y la key debe ser de la versión de Windows que tenemos instalada.</li>
+</ul>
+<h2>File System</h2>
+<ul> 
+    <li>NTFS → mejorar los permisos en red y de seguridad.</li>
+    <li>FAT 16 → admite máximo 2GB.</li>
+    <li>FAT 32 → mejorar FAT16, admite 4GB.</li>
+    <li>exFAT → mejorar FAT32 → funciona de forma eficiente en SSD o USB</li>
+    <li>ex → incluyen el journaling</li>
+</ul>
+<h2>Requísitos mínimos de los diferentes sistemas operativos</h2>
+<ul> 
+    <li> W10 → -1GB para 32 bits o 2 GB para 64 bits, 16GB  para 32 bits o 32GB para un SO de 64 bits. </li>
+
+
+</ul>
 </body>
