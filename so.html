@@ -27,7 +27,7 @@ Los Host llevan integradas una tarjeta de red o adaptador red (NIC: Network inte
 </p>
 <h2>Binario a decimal</h2>
 <p>8 4 2 1
-1010 = 8+2 = 10 - máximos números 255=2 elevado a 8  = 256 → a 8 bits. </p>ç
+1010 = 8+2 = 10 - máximos números 255=2 elevado a 8  = 256 → a 8 bits. </p>
 <h2> Direcciones IP </h2>
 <table> 
     <tr>
@@ -138,8 +138,38 @@ Los Host llevan integradas una tarjeta de red o adaptador red (NIC: Network inte
 </ul>
 <h2>Requísitos mínimos de los diferentes sistemas operativos</h2>
 <ul> 
-    <li> W10 → -1GB para 32 bits o 2 GB para 64 bits, 16GB  para 32 bits o 32GB para un SO de 64 bits. </li>
-
-
+    <li>W10 → 1GB para 32 bits o 2 GB para 64 bits, 16GB  para 32 bits o 32GB para un SO de 64 bits. </li>
+    <li>W7  → 1 GB de RAM (32 bits) o 2 GB de RAM (64 bits) y 16 GB de espacio disponible en el disco duro (32 bits) o 20 GB (64 bits)
+       </li>
+    <li>UBUNTU → 2 GB de memoria RAM y 15 GB de espacio libre en el disco duro. </li>
 </ul>
+<h2> LA CLONACIÓN DE MÁQUINAS VIRTUALES</h2>
+<p> Existen dos tipos de máquinas virtuales.</p>
+<p> 1.Clonación completa → Si se borra la original, el clon se mantiene.</p>
+<p> 2.Clonación enlazada → Si se borra la original, el clon muere.</p>
+<h2> ¿Cómo funciona el sistema de arranque?</h2>
+<p> El sistema de arranque tanto en MBR como con particiones GPT funciona de una forma muy parecida, sólo existen pequeñas variaciones entre ellos.</p>
+<p> <strong> FASE BIOS </strong> → Primera fase que se produce cuando encendemos el ordenador, son testeos y la búsqueda del sector de arranque.</p>
+<OL> 
+    <li> Corriente estable → power good </li>
+    <li> FFFF0h → POST (power on self test) → test del hardware </li>
+    <li> Pantalla donde sale la versión de la BIOS, etc. </li>
+    <li> Bootstrap </li>
+    <li> Lee desde donde arrancamos el SO</li>
+    <li> Vamos a la tabla MBR → donde estarán las 4 particiones, la cual una será la activa, tiene el arranque. Además, tiene el AA55 para poder detectar en qué cilindro, sistema y sector se encuentra. </li>
+    <li> Hay que tener en cuenta que en Linux, el sistema de arranque siempre estará en la primera partición libre: por ejemplo (/dev/sda1/). En cambio, en Windows puede ser que se ubique en segunda o tercer partición. </li>
+  </OL>
+  <p><strong> FASE BOOT </strong>→ Ya sabemos donde está el gestor de arranque. El sistema operativo procede a arrancarse.</p>
+  <P>Particiones de forma correcta →  2 particiones 1 partición primaria para el sistema operativo y otra partición para los datos. Automáticamente nos creará un fichero de unos 100MB que contendrá donde se ubica el arranque:</p>
+  <ul>
+    <li>Lilo → Arranque de versiones anteriores de Linux. </li>
+    <li>Grub2 → Arranque actual de Linux. </li>
+    <li>NTLDR → Arranque de Windows 95 a Windows XP.</li>
+    <li>Bootmgr → Arranque a partir de Windows 7 o posteriores. </li>
+    <li>Bitlocker → El programa para la encriptación de los datos.</li>
+  </ul>
+<p> UEFI → mismos pasos lo que en vez de 4 particiones, podremos tener hasta 128 particiones primarias. Además, crea un iMBR para tener una falsa compatibilidad con los discos antiguos y copia introduciendo el número en negativo en todos los ficheros.</p>
+<p><strong> FASE KERNEL </strong>→ Carga de scripts y drivers. / Windows → Winload / Linux → Kernel Linux. </p>
+<h2> SCRIPTS </h2>
+<h2> COMANDOS EN LINUX</h2>
 </body>
