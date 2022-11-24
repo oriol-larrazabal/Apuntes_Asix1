@@ -171,5 +171,163 @@ Los Host llevan integradas una tarjeta de red o adaptador red (NIC: Network inte
 <p> UEFI → mismos pasos lo que en vez de 4 particiones, podremos tener hasta 128 particiones primarias. Además, crea un iMBR para tener una falsa compatibilidad con los discos antiguos y copia introduciendo el número en negativo en todos los ficheros.</p>
 <p><strong> FASE KERNEL </strong>→ Carga de scripts y drivers. / Windows → Winload / Linux → Kernel Linux. </p>
 <h2> SCRIPTS </h2>
+<p> 
+  ·El SID o Identificador de Seguridad de Usuario es un valor único de longitud variable perteneciente a un usuario en el sistema operativo Windows. Cuando borremos este usuario, aunque creemos un nuevo usuario con el mismo nombre el SID variará.
+
+·Diferentes formas de crear usuarios locales de Windows
+
+1 → Desde el Panel de control
+Cuentas de Usuario
+Crear cuenta de usuario
+Administrar otra cuenta 
+Agregar un nuevo usuario en configuración - Añadir otra persona a este equipo
+
+2 → Administrador de equipo
+Este equipo
+Usuario nuevo
+Y nos da 4 opciones → Cuando generemos una nueva cuenta como administrador deberíamos dejar la primera por defecto
+
+3 → ejecutar lusrmgr.msc → local user manager (administrador de usuarios locales) → Esta opción no se puede ver en algunos Windows 10.
+Vamos directamente al anterior punto para crear un nuevo usuario
+
+4 → CMD (no hace falta ejecutarlo como administrador)
+control userpasswords2 - se sustituye ahora por este comando → netplwiz
+Agregar, quitar o propiedades de los usuarios existentes
+Opciones Avanzadas
+
+5 → CMD (ejecutar como administrador si no no puedes crear usuarios)
+net user → para ver los usuarios
+net user (user) (password)
+Solo para usuarios, no para grupos locales para añadirlo dentro de un grupo:
+net local group (grupo) (user) add
+
+·Como cambiar la contraseña de un usuario
+net user (user) (nueva contraseña)
+net user (user) *
+Te pedirá la contraseña y una confirmación, no se podrá ver en pantalla
+
+·Eliminar un usuario
+net user (user) /delete
+
+·Cómo crear un grupo
+net localgroup alumnis /add
+net localgroup → para verlo
+
+net localgroup  | findstr “(group)” → busca está string en está salida
+
+·Cómo activar/desactivar un usuario
+net user (user) /activate:yes → activar
+net user (user) /activate:no → desactivar
+
+·Cambiar la contraseña en el siguiente inicio de sesión
+net user (user) /LOGONPASSWORDCHG:{YES|NO}
+
+·Cambiar el nombre completo del usuario y su descripción
+net user (user) /fullname “(Full Name)”
+net user (user) /comment “(Descripción)”
+
+·Cambiar el tiempo uso del usuario
+net user (user) /times: (días), (horas); (días), (horas);
+
+·Crear un Bat → puede ser manual, con parámetros o variables
+
+Los ficheros pueden ser .bat o .cmd
+·%0-9 - Parámetros que pido 
+
+Set sirve para crear variables → ej:
+@echo off
+rem introducir usuario a través de variables
+echo Introduce el nombre del usuario
+set/p User 
+echo %User%
+pause 
+
+·Usuarios con variables
+%(TEXTO)%
+
+</p>
 <h2> COMANDOS EN LINUX</h2>
+<p>
+  Linux → metadatos → detecta qué tipo de fichero es, no lleva extensión
+admin@admin1 - VirtualBox → usuario básico
+administrador root → todo lo puede
+
+-Cómo funcionan los comandos
+comando opciones ficheros
+opciones → - (corta)  - -(larga)
+
+pwd → ver el directorio
+cat /etc/hostname 
+ls → ver las carpetas
+Absoluta → /
+Relativa → sin barra
+Touch → generar un fichero vacío
+Editores → nano y vim
+
+ls -l → tipo de fichero, permisos, usuario, propietario y fecha de creación
+ls -la → nos muestra todos los ficheros: ocultos y no. Los ficheros ocultos empiezan siempre con un punto delante.
+ls -lh → nos dice lo que ocupa el fichero
+ls -lai → nos muestra los ficheros en forma de nodos
+ls -lah → nos muestra los ficheros y su tamaño
+cd → cambiar de directorio
+La carpeta personal es /root
+cd ~ → para ir directamente al directorio personal con un comando 
+mkdir -p → crear una carpeta y dentro de ella otra
+Crear una estructura → mkdir -p ASIX{SO/{UF1,UF2,UF3,},Progr/{UF1,UF2,UF3}, Redes/{UF1},BD/{UF1},FOL/{UF1}, EIE/{UF1}, ServiciosRed/{UF1,UF2},LenMar/{UF1},Entornos/{UF1,UF2,UF3}, Tutoria/{UF1}}
+cp apuntesso.txt  /ASIX/Sistemas/ apuntes.txt
+
+Tree (nombre de carpeta) → ver la estructura de la carpeta
+mv → renombrar y mover
+sudo su → pasar a ser super usuario
+apt → instalar a partir de repositorios
+apt-get install → comando antiguo
+apt-get install aptitude → comando posterior, mejora el no borrar dependencias que utiliza otro programa.
+apt → mejorar el apt-get y el aptitude, mejora el no borrar dependencias que utiliza otro programa.
+
+update → actualiza el repositorio
+upgrade → 
+Diferencias: Las Updates proporcionan correcciones y mejoran el rendimiento del programa para asegurarse de que lo que compraste una vez sea útil para siempre. Son siempre gratis. En cambio, las Upgrades son equivalentes a las nuevas versiones de software que aportan nuevas funciones, herramientas y mejoras significativas.
+gedit → 
+
+1 sola línea, dos comandos → ;
+history → ver los últimos 26 comandos
+!(número) → te muestra ese comando
+echo (copiar comando) > comando.txt
+cat comando.txt → lo que de de si
+more comando.txt → visualizarlo pantalla a pantalla
+less comando.txt → para salir pulsar letra q, visualizarlo de arriba a abajo
+
+rl → borrar un fichero
+rm → borrar un directorio
+rm -f → borrar toda la ruta
+rmdir → borrar una carpeta vacía
+
+Permisos → hay 3 tipos de permisos. Se llaman permisos ugo (User Group Other) y son en formato octal → rwx
+chmod → comando para dar permisos en formato octal o en u=rw, g=r, (si no hay permisos no se pone) y ponemos el fichero ´→ asignar permisos
+chmod u+x → editar, añadir permisos
+000 → 0
+001 → 1 → ejecutar
+010 → 2 → leer
+011 → 3
+100 → 4 → 
+101 → 5
+110 → 6
+111 → 7
+
+chown → cambiar de propietario
+
+·Generar usuarios
+useradd (nombre) → crear un nuevo usuario
+nombre del usuario:contraseña:id name:id group:comentario:/home/messi (directorio personal de messi)
+tail -1 passwd → última línea
+tail -5 passwd → últimas 5 líneas
+head -1 passwd → la primera línea
+head -5 passwd → las 5 primeras líneas
+
+cat group
+umask → umask, editar los permisos por defecto Umask 27 → otros no tienen permisos sobre tus ficheros
+carta2.txt → tiene los permisos 644, cuando tu creas un fichero viene con los permisos 0666 pero si le restas 0022 → se te quedan los permisos 644
+En una carpeta → 755
+
+</p>
 </body>
